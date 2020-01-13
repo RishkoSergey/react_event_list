@@ -1,8 +1,8 @@
 import React from 'react'
-import { Menu } from 'semantic-ui-react'
+import { Menu, Input } from 'semantic-ui-react'
 
-const Sort = ({ setSort, sortBy }) => (
-  <Menu text>
+const Sort = ({ setSort, sortBy, setSearch, searchQuery }) => (
+  <Menu vertical text>
     <Menu.Item
       active={sortBy === 'all'}
       onClick={setSort.bind(this, 'all')}
@@ -38,6 +38,14 @@ const Sort = ({ setSort, sortBy }) => (
       onClick={setSort.bind(this, 'festival')}
     >
       Только фестивали
+    </Menu.Item>
+    <Menu.Item>
+      <Input 
+        icon="search" 
+        value={searchQuery} 
+        placeholder="Поиск по событиям..." 
+        onChange={e => setSearch(e.target.value)}
+      />
     </Menu.Item>
   </Menu>
 )

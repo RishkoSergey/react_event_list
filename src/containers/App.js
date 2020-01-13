@@ -18,10 +18,21 @@ const sorting = (events, sortBy) => {
     default:
       return events;
   }
-}
+};
 
-const mapStateToProps = ({ events }) => ({
-    events: sorting(events.items, events.sortBy),
+const searching = (events, searchQuery) => 
+  events.filter(elem => 
+    elem.title.toLowerCase().indexOf(searchQuery.toLowerCase()) >= 0 ||
+    elem.address.toLowerCase().indexOf(searchQuery.toLowerCase()) >= 0 ||
+    elem.description.toLowerCase().indexOf(searchQuery.toLowerCase()) >= 0 
+  );
+
+const findEvent = (events, sortBy, searchQuery) => {
+  return sorting(searching(events, searchQuery), sortBy);
+};
+
+const mapStateToProps = ({ events, sort }) => ({
+    events: findEvent(events.items, sort.sortBy, sort.searchQuery),
     isReady: events.isReady,
   });
   
