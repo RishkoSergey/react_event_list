@@ -1,25 +1,25 @@
 import React from 'react';
-import { Card } from 'semantic-ui-react'
+import { Card, Image, Icon } from 'semantic-ui-react'
 
-const EventCard = ({ title, description, price }) => (
+const EventCard = ({ title, description, price, address, image }) => (
   <Card>
-    {/* <Image src='https://react.semantic-ui.com/images/avatar/large/matthew.png' wrapped ui={false} /> */}
+    <Image src={image} wrapped ui={false} />
     <Card.Content>
-      <Card.Header>{title}</Card.Header>
+      <Card.Header>
+        {title}
+      </Card.Header>
       <Card.Meta>
-        <span className='date'>{price} руб.</span>
+        <span className='date'>{address}</span>
       </Card.Meta>
       <Card.Description>
         {description}
       </Card.Description>
     </Card.Content>
-    {/* <Card.Content extra>
-      <a>
-        <Icon name='user' />
-        22 Friends
-      </a>
-    </Card.Content> */}
+    <Card.Content extra>
+      {price}
+      <Icon name='rub' />
+    </Card.Content>
   </Card>
 )
 
-export default EventCard
+export default EventCard;
