@@ -21,6 +21,24 @@ const Sort = ({ setSort, sortBy }) => (
     >
       Сначала дорогие
     </Menu.Item>
+    <Menu.Item
+      active={sortBy === 'exhibition'}
+      onClick={setSort.bind(this, 'exhibition')}
+    >
+      Только выставки
+    </Menu.Item>
+    <Menu.Item
+      active={sortBy === 'movie'}
+      onClick={setSort.bind(this, 'movie')}
+    >
+      Только кино
+    </Menu.Item>
+    <Menu.Item
+      active={sortBy === 'festival'}
+      onClick={setSort.bind(this, 'festival')}
+    >
+      Только фестивали
+    </Menu.Item>
   </Menu>
 )
 
