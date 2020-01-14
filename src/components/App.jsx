@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { Container, Card, Grid } from 'semantic-ui-react';
+import { Container, Card, Grid, Loader } from 'semantic-ui-react';
 
 import Navbar from '../containers/Navbar';
 import EventCard from '../containers/EventCard';
@@ -19,16 +19,16 @@ class App extends Component {
       <Container>
         <Navbar />
         <Grid>
-          <Grid.Column mobile={16} largeScreen={4}>
+          <Grid.Column mobile={14} largeScreen={4}>
             <Sort />
           </Grid.Column>
-          <Grid.Column mobile={16} largeScreen={12}>
+          <Grid.Column mobile={14} largeScreen={12}>
             <Card.Group stackable itemsPerRow={3}>
               { isReady 
                 ? events.map(item => (
                   <EventCard {...item} />
                 ))
-                : <p>Тут будет лоадер</p> 
+                : <Loader active inline='centered' />
               }
             </Card.Group>
           </Grid.Column>

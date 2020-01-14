@@ -1,5 +1,5 @@
 import React from 'react';
-import { Menu, Icon, Button, List, Popup } from 'semantic-ui-react';
+import { Menu, Icon, Button, List, Popup, Grid } from 'semantic-ui-react';
 
 const Favorites = ({ title, id, image, removeFromFavorites }) => (
   <List selection divided verticalAlign="middle">
@@ -13,26 +13,30 @@ const Favorites = ({ title, id, image, removeFromFavorites }) => (
 )
 
 const Navbar = ({ count, items }) => (
-  <Menu>
-    <Menu.Item
-      name='name'
-    >
-      События в Санкт-Петербурге
-    </Menu.Item>
-
-    <Menu.Menu position='right'>
-      <Popup trigger={
+  <Grid>
+    <Grid.Column mobile={14} largeScreen={16}>
+      <Menu>
         <Menu.Item
-          name='favorites'
+          name='name'
         >
-          Избранное(<b>{count}</b>)
+          События в СПб
         </Menu.Item>
-      }
-      content={items.map(event => <Favorites {...event}/>)}
-      on="click"
-    />
-    </Menu.Menu>
-  </Menu>
+
+        <Menu.Menu position='right'>
+          <Popup trigger={
+            <Menu.Item
+              name='favorites'
+            >
+              Избранное(<b>{count}</b>)
+            </Menu.Item>
+          }
+          content={items.map(event => <Favorites {...event}/>)}
+          on="click"
+        />
+        </Menu.Menu>
+      </Menu>
+    </Grid.Column>
+  </Grid>
 );
 
 export default Navbar;
