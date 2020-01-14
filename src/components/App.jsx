@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { Container, Card, Grid } from 'semantic-ui-react' 
+import { Container, Card, Grid } from 'semantic-ui-react';
 
 import Navbar from '../containers/Navbar';
 import EventCard from '../containers/EventCard';

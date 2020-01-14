@@ -1,5 +1,6 @@
 import React from 'react';
 import { Card, Image, Icon, Button } from 'semantic-ui-react';
+import { NavLink } from 'react-router-dom';
 
 const EventCard = (props) => {
   const { title, address, image, description, price, id, items, addToFavorites} = props;
@@ -7,9 +8,11 @@ const EventCard = (props) => {
     <Card>
       <Image src={image} wrapped ui={false} />
       <Card.Content>
-        <Card.Header>
-          {title}
-        </Card.Header>
+        <NavLink to={'/event/'+id}>
+          <Card.Header>
+            {title}
+          </Card.Header>
+        </NavLink>
         <Card.Meta>
           <span className='date'>{address}</span>
         </Card.Meta>
