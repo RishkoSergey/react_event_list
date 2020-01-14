@@ -1,7 +1,18 @@
 import React from 'react';
-import { Menu } from 'semantic-ui-react';
+import { Menu, Icon, Button, List, Popup } from 'semantic-ui-react';
 
-const Navbar = () => (
+const Favorites = ({ title, id, image, removeFromFavorites }) => (
+  <List selection divided verticalAlign="middle">
+    <List.Item>
+      <List.Content floated="right">
+        <Button onClick={removeFromFavorites.bind(this, id)} color="red"><Icon name="remove" /></Button>
+      </List.Content>
+      <List.Content>{title}</List.Content>
+    </List.Item>
+  </List>
+)
+
+const Navbar = ({ count, items }) => (
   <Menu>
     <Menu.Item
       name='name'
@@ -10,11 +21,16 @@ const Navbar = () => (
     </Menu.Item>
 
     <Menu.Menu position='right'>
-      <Menu.Item
-        name='favorites'
-      >
-        Избранное
-      </Menu.Item>
+      <Popup trigger={
+        <Menu.Item
+          name='favorites'
+        >
+          Избранное(<b>{count}</b>)
+        </Menu.Item>
+      }
+      content={items.map(event => <Favorites {...event}/>)}
+      on="click"
+    />
     </Menu.Menu>
   </Menu>
 );

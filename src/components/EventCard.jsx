@@ -1,25 +1,29 @@
 import React from 'react';
-import { Card, Image, Icon } from 'semantic-ui-react'
+import { Card, Image, Icon, Button } from 'semantic-ui-react';
 
-const EventCard = ({ title, description, price, address, image }) => (
-  <Card>
-    <Image src={image} wrapped ui={false} />
-    <Card.Content>
-      <Card.Header>
-        {title}
-      </Card.Header>
-      <Card.Meta>
-        <span className='date'>{address}</span>
-      </Card.Meta>
-      <Card.Description>
-        {description}
-      </Card.Description>
-    </Card.Content>
-    <Card.Content extra>
-      {price}
-      <Icon name='rub' />
-    </Card.Content>
-  </Card>
-)
+const EventCard = (props) => {
+  const { title, address, image, description, price, id, items, addToFavorites} = props;
+  return(
+    <Card>
+      <Image src={image} wrapped ui={false} />
+      <Card.Content>
+        <Card.Header>
+          {title}
+        </Card.Header>
+        <Card.Meta>
+          <span className='date'>{address}</span>
+        </Card.Meta>
+        <Card.Description>
+          {description}
+        </Card.Description>
+      </Card.Content>
+      <Card.Content extra>
+        {price}
+        <Icon name='rub' />
+      </Card.Content>
+      <Button disabled={items.filter(item => item.id === id).length > 0} onClick={addToFavorites.bind(this, props)}>Добавить в избранное</Button>
+    </Card>
+  )
+}
 
 export default EventCard;

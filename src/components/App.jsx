@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { Container, Card, Grid } from 'semantic-ui-react' 
 
-import Navbar from './Navbar';
-import EventCard from './EventCard';
+import Navbar from '../containers/Navbar';
+import EventCard from '../containers/EventCard';
 import Sort from '../containers/Sort';
 
 class App extends Component {

@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import { setSort, setSearch } from '../actions/sort';
 import Sort from '../components/Sort';
 
-const mapStateToProps = ({ sort }) => ({
+  const mapStateToProps = ({ sort }) => ({
     sortBy: sort.sortBy
   });
   
